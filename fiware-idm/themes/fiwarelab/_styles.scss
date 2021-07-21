@@ -1,0 +1,20 @@
+/****************************** Custom styles rewrite */
+
+.logo-header .brand {
+  background-image: url(../img/FIWARE-lab-2x.png);
+  width: 150px;
+  background-size: 150px 37px;
+}
+
+.logo-header {
+    float: left;
+}
+
+.presentation {
+	.media {
+		height: auto;
+		footer {
+			margin-top: 15px;
+		}
+	}
+}

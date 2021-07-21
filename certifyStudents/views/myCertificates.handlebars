@@ -1,0 +1,25 @@
+<h3>Mis certificados <span class="badge bg-secondary">{{certificates.length}}</span></h3>
+
+<br><br>
+
+<a target="_blank" style="text-decoration: none" href="https://www.linkedin.com/profile/add">
+    <img src="https://download.linkedin.com/desktop/add2profile/buttons/es_ES.png " alt="LinkedIn Add to Profile button">
+</a>
+<br><br>
+
+<div class="row">
+    {{#each certificates}}
+        <div class="col-sm-6">
+            <div class="card shadow mb-3 p-3 bg-body rounded border-0" id={{_id}}>
+                <h5 class="card-title">{{courseName}}</h5>
+                <div class="card-body">
+                    <p class="card-text">ID de la credencial: {{ _id }}</p>
+                    <a class="card-text" href="http://localhost:3001/verify/{{_id}}">URL de la credencial: </a>
+                    <p class="card-text">{{ completedTasks }} tareas completadas</p>
+                    <p class="card-text">Fecha de emisión: {{ dateOfIssue }}</p>
+                    <a class="btn btn-outline-primary" href="/student/downloadCertificate/{{_id}}">Descargar PDF</a>
+                </div>
+            </div>
+        </div>
+    {{/each}}
+</div>

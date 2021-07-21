@@ -1,0 +1,14 @@
+/****************************** Variables */
+@import "root/general/variables";
+
+/****************************** Bootstrap */
+@import "./node_modules/bootstrap-sass/assets/stylesheets/_bootstrap";
+
+/****************************** Mixins */
+@import "root/general/mixins/mixins_call";
+
+/****************************** Rewrites */
+@import "rewrites/rewrites_call";
+
+/****************************** Base */
+@import "root/root_call";

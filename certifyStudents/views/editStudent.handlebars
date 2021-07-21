@@ -1,0 +1,17 @@
+<p class="h3">{{info.course_name}} - Progreso de @{{info.student_name}}</p>
+<p class="lead">{{info.student_email}} </p>
+
+<p class="fw-bold">{{info.completedTasks}} de {{info.totalTasks}} tareas completadas</p>
+<div class="progress mb-3" style="height: 50px;"> 
+    <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" style="width: {{info.progress}}%" aria-valuemin="0" aria-valuemax="100">{{info.progress}}%</div>
+</div>
+
+{{#check info.progress}}
+    <div class="alert alert-warning" role="alert">El alumno ha completado todas las tareas de {{info.course_name}}</div>
+{{else}}
+    <form action="/professor/addCompletedTask" method="post">
+        <input type="hidden" name="_id" value={{info.student_id}}>
+        <input type="hidden" name="org_id" value={{info.course_id}}>
+        <button type="submit" class="btn btn-outline-primary">Añadir tarea completada</button>
+    </form>
+{{/check}}

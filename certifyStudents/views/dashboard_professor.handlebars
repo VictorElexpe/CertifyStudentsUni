@@ -1,0 +1,85 @@
+<h3 class="my-5">
+	{{#if user.name}}
+		@{{ user.name}}
+	{{/if}}
+	<small class="text-muted">Profesor</small>
+	<br>
+	<small class="text-muted">{{ user.email}}</small>
+	<br><br>
+	<button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteAccount">Borrar cuenta</button>
+</h3>
+
+<div>
+	<button type="button" class="btn btn-outline-primary mb-3" data-bs-toggle="modal" data-bs-target="#createNewCourse">Crear nuevo curso</button>
+	<p class="h3 my-3">Cursos</p>
+	<div class="row">
+		{{#each organizations}}
+			<div class="col-sm-6">
+				<div class="card shadow mb-3 p-3 bg-body rounded border-0" id={{ _id }}>
+					<div class="card-body">
+						<h5 class="card-title">{{ name }}</h5>
+						<span class="badge bg-primary">{{tasks}} tareas a completar</span>
+						<p class="card-text">{{ description }}</p>
+						<a href="/professor/courses/{{_id}}" class="btn btn-outline-primary">Ver en detalle</a>
+					</div>
+				</div>
+			</div>
+		{{/each}}
+	</div>
+</div>
+
+<!-- Modal to allow API -->
+<div class="modal fade" id="APImodal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Habilitar API</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"/>
+			</div>
+			<div class="modal-body">
+				<form action="/getTokenFromAPI" method="post">
+					<div class="form-group mb-3">
+						<input type="email" class="form-control" id="inputEmail" name="inputEmail" aria-describedby="emailHelp" placeholder="Enter email">
+					</div>
+					<div class="form-group mb-3">
+						<input type="password" class="form-control" id="inputPassword" name="inputPassword" placeholder="Password">
+					</div>
+					<button type="submit"  class="btn btn-primary">Submit</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Modal to create new course -->
+<div class="modal fade" id="createNewCourse" role="dialog" aria-labelledby="createNewCourse" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Crear nuevo curso</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<form action="/professor/addCourse", method="POST">
+					<div class="mb-3">
+						<label for="name" class="form-label">Nombre del curso</label>
+						<input required="true" type="text" name="name" class="form-control" id="name" placeholder="ej. Seguridad en sistemas y redes">
+					</div>
+					<div class="mb-3">
+						<label for="description" class="form-label">Descripción</label>
+						<input required="true" type="text" name="description" class="form-control" id="description" placeholder="ej. Como se aseguran redes informáticas">
+					</div>
+					<div class="mb-3">
+						<label for="website" class="form-label">Página del curso</label>
+						<input required="true" type="url" name="website" class="form-control" id="website" placeholder="ej. moodle.upm.es/sssr">
+					</div>
+					<div class="mb-3">
+						<label for="tasks" class="form-label">Tareas del curso</label>
+						<input required="true" type="text" name="tasks" class="form-control" id="tasks" placeholder="ej. 5">
+					</div>
+					<button type="submit" class="btn btn-primary">Crear curso</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

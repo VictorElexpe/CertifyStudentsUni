@@ -1,0 +1,86 @@
+<p class="h3 my-3">Mi perfil</p>
+<h3 class="my-5">
+	{{#if userInfo.displayName}}
+		{{ userInfo.displayName}}
+	{{else}}
+		@{{ userInfo.name}}
+		<br>
+		<form action="/student/addname", method="POST">
+			<div class="mb-3">
+				<input type="text" class="form-control" id="displayName" name="displayName" placeholder="Tu nombre y apellido para mostrarlo en los certificados">
+			</div>
+			<button type="submit" class="btn btn-primary">Cambiar </button>
+		</form>
+	{{/if}}
+	<small class="text-muted">Estudiante</small>
+	<br>
+	<small class="text-muted">{{ userInfo.email}}</small>
+	<br><br>
+	<a class="btn btn-outline-primary" href="/student/mycertificates" role="button">Mis certificados</a>
+	<br><br>
+	<button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteAccount">Borrar cuenta</button>
+</h3>
+
+<div class="mb-5">
+	{{#if userInfo.courses}}
+	<p class="h3 my-3">Cursos a los que perteneces</p>
+		<div class="row">
+			{{#each userInfo.courses}}
+				<div class="col-sm-6">
+					<div class="card shadow mb-3 p-3 bg-body rounded border-0" id={{_id}}>
+						<div class="card-body">
+							<h5 class="card-title">{{org_name}}</h5>
+							<p class="fw-bold">Progreso total: {{progress _id completedTasks }}%</p>
+							<div class="progress mb-3" style="height: 20px;">
+								<div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" style="width: {{progress _id completedTasks }}%" aria-valuemin="0" aria-valuemax="100">{{progress _id completedTasks }}%</div>
+							</div>
+							<a class="btn btn-outline-danger" href="/student/courses/delete/{{_id}}" role="button">Desmatricularse</a>
+						</div>
+					</div>
+				</div>
+			{{/each}}
+		</div>
+
+	{{else}}
+		<div class="alert alert-warning mt-3" role="alert">Todavía no te has matriculado en ningún curso.</div>
+	{{/if}}
+</div>
+
+<div class="mb-5">
+	{{#if allCourses}}
+		<p class="h3 my-3">Cursos disponibles</p>
+		<div class="row">
+			{{#each allCourses}}
+				<div class="col-sm-6">
+					<div class="card mb-3 shadow p-3 mb-5 bg-body rounded border-0" id={{ _id }}>
+						<div class="card-body">
+							<h5 class="card-title">{{ name }}</h5>
+							<span class="badge bg-secondary">{{tasks}} tareas</span>
+							<p class="card-text">{{ description }}</p>
+							<a href="/student/courses/{{ _id }}/{{name}}/signup" class="btn btn-outline-primary">Entrar</a>
+						</div>
+					</div>
+				</div>
+			{{/each}}
+		</div>
+	{{/if}}
+</div>
+
+<!-- Delete account modal -->
+<div class="modal fade" id="deleteAccount" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Borrar cuenta</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<p>¿Estás seguro de que deseas borrar tu cuenta del curso? Esta acción no podrá deshacerse. Si todavía tienes cursos pendientes de finalizar perderás todo el progreso.</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+				<button type="button" class="btn btn-outline-danger">Borrar cuenta de forma definitiva</button>
+			</div>
+		</div>
+	</div>
+</div>

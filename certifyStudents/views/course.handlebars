@@ -1,0 +1,47 @@
+{{#each organization}}
+	<nav aria-label="breadcrumb">
+		<ol class="breadcrumb bg-white">
+			<li class="breadcrumb-item"><a style="text-decoration: none" href="/professor">Inicio</a></li>
+			<li class="breadcrumb-item active" aria-current="page">{{name}}</li>
+		</ol>
+	</nav>
+
+	<div class="my-5 shadow p-3 bg-body rounded border-0">
+		<p class="h3">{{name}}</p>
+		<p class="lead">{{description}} </p>
+		<a class="lead" target="_blank" style="text-decoration: none" href={{website}}>Página web del curso</a>
+	
+		<form action="/professor/setAmountOfTasks" method="POST">
+			<div class="input-group my-3">
+				<label for="staticEmail" class="col-md-1 col-form-label">Tareas</label>
+				<input type="hidden" name="_id" value={{_id}}>
+				<input type="text" name="tasks" class="form-control mr-2" placeholder="{{tasks}} tareas en el curso" aria-describedby="button-addon2">
+				<button type="submit" class="btn btn-outline-primary" id="button-addon2">Cambiar</button>
+			</div>
+		</form>
+	</div>
+
+	{{#if students}}
+		<p class="lead">Alumnos matriculados</p>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+				<th scope="col">Email</th>
+				<th scope="col"></th>
+				</tr>
+			</thead>
+			<tbody>
+				{{#each students}}
+					<tr>
+						<td>{{email}}</td>
+						<td><a class="btn btn-outline-primary" href="/professor/editStudent/{{@root.organization.0._id}}/{{_id}}" role="button">Editar alumno</a></td>
+					</tr>
+				{{/each}}
+			</tbody>
+		</table>
+	{{else}}
+		<div class="alert alert-warning my-3" role="alert">
+  			Todavía no hay alumnos matriculados.
+		</div>
+	{{/if}}
+{{/each}}

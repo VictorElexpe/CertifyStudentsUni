@@ -1,0 +1,65 @@
+.panel-default > .panel-heading{
+  background-color: transparent;
+  min-height: 39px;
+  padding: 7px 6px 6px 13px;
+  h5{
+    float: left;
+    color: $gray-darker;
+  }
+  a{
+    float: right;
+  }
+}
+.panel-body{
+  padding: 0 15px;
+}
+
+.panel-footer{
+  padding: 8px;
+  background-color: #FFF;
+  border-top: none;
+  min-height: 28px;
+  a{
+    float: right;
+    min-height: 28px;
+  }
+}
+
+.panel-heading.note-toolbar>.btn-group {
+    float: left;
+}
+
+.panel-heading.note-toolbar>.btn-group>.note-btn-group>.note-btn {
+    border-color: #ccc;
+    border-radius: 3px;
+    color: black;
+}
+
+.panel-heading.note-toolbar>.btn-group>.note-btn {
+    border-color: #ccc;
+    border-radius: 3px;
+    color: black;
+}
+
+.panel-default > .note-editing-area> .note-editable{
+  ul>li {
+    list-style-type: disc;
+  }
+
+  ol {
+    list-style-type: none;
+  }
+
+  ol>li {
+    counter-increment: step-counter;
+  }
+
+  ol>li::before {
+    content: counter(step-counter);
+    margin-right: 5px;
+    background-color: white;
+    color: black;
+    padding: 3px 8px;
+    border-radius: 3px;
+  }
+}

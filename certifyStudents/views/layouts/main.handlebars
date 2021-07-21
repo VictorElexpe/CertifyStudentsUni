@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+	<title>upmCertificados | {{ title }}</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossOrigin="anonymous">
+</head>
+<body style="background-color: #FFFFFF">
+
+	<nav class="navbar navbar-expand-lg navbar-light mb-3 shadow p-3 mb-5 bg-body rounded sticky-top">
+		<div class="container">
+			<a class="navbar-brand" href="/">upmCertificados</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+				<a class="navbar-brand" href="/verify">Verificar credencial</a>
+				{{#if req.session}}
+					<a href="/logout">Cerrar sesión</a>
+				{{/if}}
+			</div>
+		</div>
+	</nav>
+
+	<div class="container">
+		
+		{{{body}}}
+
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+	</div>
+
+</body>
+</html>

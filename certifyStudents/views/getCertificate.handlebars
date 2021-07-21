@@ -1,0 +1,18 @@
+<h3 class="text-center mb-5">¡Curso completado! {{userInfo.username}}</h3>
+<div class="card shadow my-3 p-3 bg-body rounded border-0">
+	<div class="card-body">
+		<h5 class="card-title">{{course.name}}</h5>
+		<p>{{course.description}}</p>
+		<hr>
+		<p>Organización emisora: <span class="fw-bold">Universidad Politécnica de Madrid</span></p>
+		<p>Esta credencial no caduca</p>
+		<p>Fecha de expedición: <span class="fw-bold"></span></p>
+		<p>ID de la credencial: {{credentialId}}<span class="fw-bold"></span></p>
+		<p>URL de la credencial: <span class="fw-bold"></span></p>
+		<hr>
+		<a target="_blank" style="text-decoration: none" href="https://www.linkedin.com/profile/add">
+			<img src="https://download.linkedin.com/desktop/add2profile/buttons/es_ES.png" alt="LinkedIn Add to Profile button">
+		</a>
+		<a class="btn btn-outline-primary" href="/student/downloadCertificate">Descargar PDF</a>
+	</div>
+</div>
